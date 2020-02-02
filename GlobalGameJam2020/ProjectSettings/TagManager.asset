@@ -7,6 +7,18 @@ TagManager:
   - Chao
   - PainelCreditos
   - Porta
+  - Objeto
+  - Chave
+  - Usado
+  - Geladeira
+  - Fogao
+  - PiaCozinha
+  - Quadro
+  - Sofa
+  - 10
+  - 8
+  - 6
+  - 4
   layers:
   - Default
   - TransparentFX

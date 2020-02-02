@@ -6,27 +6,49 @@ public class Player : MonoBehaviour
 {
     public KeyCode Esquerda, Direita, Pular, consertar;
     SpriteRenderer render;
-    private Rigidbody2D rb2D;
-    private Animator animacao;
-    float horizontal, velocidadeD = 5f, velocidadeE = -5f;
-    public bool noChao = false, naPorta=false;
+    Rigidbody2D rb2D;
+    Animator animacao;
+    float horizontal, velocidadeD = 5f, velocidadeE = -5f, tempo = 0;
+    public bool noChao = false, naPorta=false, consertando = false;
 
     void Start()
     {
         render = GetComponent<SpriteRenderer>();
         rb2D = GetComponent<Rigidbody2D>();
         animacao = GetComponent<Animator>();
+        render.flipX = true;
     }
 
     void FixedUpdate()
     {
+        if (!consertando)
+        {
+            animacao.SetBool("Construindo", false);
+            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+            GetComponent<BoxCollider2D>().isTrigger = false;
+            Movimentar();
+            Pulo();
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            tempo -= Time.deltaTime;
+            animacao.SetBool("Construindo", true);
+            GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            if (tempo <= 0)
+            {
+                consertando = false;
+            }
+        }
         //CHAMA AS FUNÇÕES 
-        Movimentar();
-        Pulo();
+        
+        
     }
 
     void Movimentar()
     {//MOVE ESQUERDA
+        
         if (Input.GetKey(Esquerda))
         {
             rb2D.velocity = new Vector2(velocidadeE, rb2D.velocity.y);
@@ -48,24 +70,6 @@ public class Player : MonoBehaviour
         {
             animacao.SetBool("Andando", false);
         }
-
-        if (Input.GetKey(consertar))
-        {
-            animacao.SetBool("Construindo", true);
-        }
-        else
-        {
-            animacao.SetBool("Construindo", false);
-        }
-
-        if (!noChao || Input.GetKey(Pular))
-        {
-            animacao.SetBool("Pulando", true);
-        }
-        else
-        {
-            animacao.SetBool("Pulando", false);
-        }
     }
 
     void Pulo()
@@ -73,11 +77,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(Pular) && noChao && !naPorta)
         {
             rb2D.AddForce(new Vector2(0f, 9f), ForceMode2D.Impulse);
-            animacao.SetBool("Pulando", true);
-        }
-        else
-        {
-            animacao.SetBool("Pulando", false);
         }
     }
 
@@ -97,4 +96,11 @@ public class Player : MonoBehaviour
             naPorta = false;
         }
     }
+
+    public void IniciarConserto(float timing)
+    {
+        tempo = timing;
+        consertando = true;
+    }
+
 }
