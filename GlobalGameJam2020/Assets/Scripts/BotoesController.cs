@@ -5,16 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class BotoesController : MonoBehaviour
 {
-    public GameObject painelIdiomas, painelCreditos;
+    public GameObject painelIdiomas, painelCreditos, painelIntro1, painelIntro2;
 
     public void FecharAplicativo()
     {
         Application.Quit();
     }
 
+    public void botaoProximo()
+    {
+        painelIntro1.SetActive(false);
+        painelIntro2.SetActive(true);
+    }
+
+    public void botaoAnterior()
+    {
+        painelIntro1.SetActive(true);
+        painelIntro2.SetActive(false);
+    }
+
     public void CarregaJogo()
     {
         SceneManager.LoadScene("GamePlay");
+    }
+
+    public void CarregaIntroducao()
+    {
+        SceneManager.LoadScene("Introducao");
     }
 
     public void CarregaFimDeJogo()

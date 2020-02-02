@@ -23,18 +23,18 @@ public class PlacarFinal : MonoBehaviour
         //CHECA QUAL PLAYER FEZ MAIS PONTOS E ESCREVE NA TELA
         if (P1pontos>P2pontos)
         {
-            StatusP1.text = "WIN";
-            StatusP2.text = "LOSE";
+            StatusP1.text = "GANHOU";
+            StatusP2.text = "PERDEU";
         }
         else if (P1pontos < P2pontos)
         {
-            StatusP1.text = "LOSE";
-            StatusP2.text = "WIN";
+            StatusP1.text = "PERDEU";
+            StatusP2.text = "GANHOU";
         }
         else
         {
-            StatusP1.text = "DRAW";
-            StatusP2.text = "DRAW";
+            StatusP1.text = "EMPATE";
+            StatusP2.text = "EMPATE";
         }
     }
 }

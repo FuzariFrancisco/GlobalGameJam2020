@@ -8,7 +8,7 @@ using System;
 public class GerenciadorPlacares : MonoBehaviour
 {
     public Text PlacarP1, PlacarP2, Tempo;
-    float timer, startTime = 90;
+    float timer, startTime = 100;
     public int pontosP1, pontosP2;
 
     void Start()
