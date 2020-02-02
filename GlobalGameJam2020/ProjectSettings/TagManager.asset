@@ -7,8 +7,23 @@ TagManager:
   - Chao
   - PainelCreditos
   - Porta
+<<<<<<< HEAD
   - TagDetectarObjetos
   - SofaQuebrado
+=======
+  - Objeto
+  - Chave
+  - Usado
+  - Geladeira
+  - Fogao
+  - PiaCozinha
+  - Quadro
+  - Sofa
+  - 10
+  - 8
+  - 6
+  - 4
+>>>>>>> master
   layers:
   - Default
   - TransparentFX

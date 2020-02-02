@@ -8,15 +8,14 @@ using System;
 public class GerenciadorPlacares : MonoBehaviour
 {
     public Text PlacarP1, PlacarP2, Tempo;
-    float timer, startTime = 5000;
+    float timer, startTime = 90;
     public int pontosP1, pontosP2;
 
     void Start()
     {//TEMPORÁRIO
-        pontosP1 = 5;
-        pontosP2 = 5;
-        PlayerPrefs.SetInt("PontosPlayer1", pontosP1);
-        PlayerPrefs.SetInt("PontosPlayer2", pontosP2);
+        pontosP1 = 0;
+        pontosP2 = 0;
+        SalvarPontos();
         //DEFINE O TEMPO INICIAL 
         timer = startTime;
     }
