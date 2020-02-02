@@ -7,6 +7,8 @@ TagManager:
   - Chao
   - PainelCreditos
   - Porta
+  - TagDetectarObjetos
+  - SofaQuebrado
   layers:
   - Default
   - TransparentFX
